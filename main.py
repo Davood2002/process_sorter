@@ -1,10 +1,10 @@
+#! /bin/python
+
 # import required modules
 from pandas import DataFrame
 from datetime import datetime as dt
 from sys import argv
 from subprocess import check_output as run
-
-
 
 # get the processes
 txt = run('ps aux' , shell=True).decode()[:-1]
@@ -24,7 +24,7 @@ df.drop("PID" , axis=1 , inplace=True)
 # save to csv
 time = str(dt.now())
 time = time[:time.find(".")].replace(" " , "_")
-df.to_csv(time+'.csv')
+df.to_csv(f'/opt/process_sorter/{time}.csv')
 
 if len(argv) > 1:
     # get parameters
